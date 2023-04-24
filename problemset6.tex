@@ -1,0 +1,99 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{Electrodynamics \\Problem Set 6\\}
+\author{\\董建宇 ~2019511017}
+\date{April 6}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+To determine the energy associated with this charge configuration, we need to determine the surface charge density on the surfaces of the two dielectrics. Assume the polarization surface charge density on the top dielectric is $\sigma_1$, the polarization surface charge density on the below dielectric is $\sigma_2$. We have that $$\sigma_1 = \vec{P_1}\cdot\vec{e}_z = \epsilon_0(\kappa_1-1)E_{1z},~\sigma_2 = \vec{P_2}\cdot(-\vec{e}_z) = -\epsilon_0(\kappa_2-1)E_{2z}$$\indent
+We could calculate that $$\begin{aligned}
+    E_{1z}&=-\frac{1}{4\pi\epsilon_0\kappa_1}\frac{qz}{\left(r^2+z^2\right)^{\frac{3}{2}}}-\frac{1}{4\pi\epsilon_0\kappa_1}\frac{qz}{\left(r^2+z^2\right)^{\frac{3}{2}}}\\
+    E_{2z}&=-\frac{1}{4\pi\epsilon_0\kappa_2}\frac{qz}{\left(r^2+z^2\right)^{\frac{3}{2}}}-\frac{1}{4\pi\epsilon_0\kappa_2}\frac{qz}{\left(r^2+z^2\right)^{\frac{3}{2}}}
+\end{aligned}$$\indent
+Thus, we get that $$\begin{aligned}
+    \sigma_1&=-\frac{\kappa_1-1}{\kappa_1}\frac{qz}{4\pi\left(r^2+z^2\right)^{\frac{3}{2}}}-\frac{\kappa_1-1}{\kappa_1}\frac{qz}{4\pi\left(r^2+z^2\right)^{\frac{3}{2}}}\\
+    \sigma_2&=\frac{\kappa_2-1}{\kappa_2}\frac{qz}{4\pi\left(r^2+z^2\right)^{\frac{3}{2}}}+\frac{\kappa_2-1}{\kappa_2}\frac{qz}{4\pi\left(r^2+z^2\right)^{\frac{3}{2}}}
+\end{aligned}$$\indent
+So we could get that $$\sigma=\sigma_1+\sigma_2=\frac{\kappa_2-\kappa_1}{2\kappa_1\kappa_2}\frac{qz}{\pi\left(r^2+z^2\right)^{\frac{3}{2}}}$$\indent
+We could determine the protential at point charge q is $$\varphi_q=\frac{1}{4\pi\epsilon_0\kappa_1}\frac{-q}{2z}$$\indent
+The protential at point charge -q is $$\varphi_{-q}=\frac{1}{4\pi\epsilon_0\kappa_2}\frac{q}{2z}$$\indent
+Thus, the energy associated with this charge configuration is $$E_{total}=\frac{1}{2}\left(q\varphi_q-q\varphi_{-q}\right)=-\frac{\kappa_1+\kappa_2}{16\pi\epsilon_0\kappa_1\kappa_2}\frac{q}{z}$$\indent
+\subsection{$\kappa_1=\kappa_2=1$}
+We have that if dielectrics 1 and 2 are replaced by vacuum, the total energy is $$E'=-\frac{1}{4\pi\epsilon_0}\frac{q}{2z}$$\indent
+and this result makes sence.
+\subsection{$\kappa_1=\kappa_2\neq 1$}
+If $\kappa_1=\kappa_2=\kappa\neq 1$, we could get that the total energy is $$E''=-\frac{1}{4\pi\epsilon_0\kappa}\frac{q}{2z}$$\indent
+and this result also makes sence.
+
+\section{}
+Since the system has axial symmetry, we choose spherical coordinates to describe the protential at all points in space and let the direction of dipole along the z-axis, so the protential has no connection with $\varphi$.\\\indent
+According to the Laplace function, we have that$$\nabla^2V = \frac{\rho}{\epsilon}$$\indent
+Assume the protential could be written as$$V(r,\theta) = S(r) \Theta (\theta)$$\indent
+So we could get that the place in the dielectric sphere is $$\frac{1}{S}\frac{d}{dr}\left(r^2\frac{dS}{dr}\right) + \frac{1}{\Theta \sin\theta}\frac{d}{d\theta}\left(\sin\theta \frac{d\Theta}{d\theta}\right) = -\frac{q}{\epsilon_0\kappa}\left(\delta\left(\vec{r}-\frac{l}{2}\vec{k}\right)-\delta\left(\vec{r}+\frac{l}{2}\vec{k}\right)\right)$$\indent
+The boundary conditions are V is continuous at r=R and the eletric field divided by $\epsilon$ is continuous at r=R. Which means $$V_{in}(R,\theta)=V_{out}(R,\theta),~\epsilon_0\kappa\left.\frac{\partial V_{in}}{\partial r}\right\rvert_{r=R}=\epsilon_0\left.\frac{\partial V_{out}}{\partial r}\right\rvert_{r=R}$$\indent
+If there exists the dielectric sphere, we could determine the protential at $r<R$ is $$V_0'=\frac{1}{4\pi\epsilon_0\kappa}\frac{p}{r^2}\cos\theta$$\indent
+When there is not the dielectric sphere, we could determine the protential at any point at (r,$\theta$) is $$V_0=\frac{1}{4\pi\epsilon_0}\frac{p}{r^2}\cos\theta$$\indent
+According to the knowledge we have learnt, we could get the general solution is $$\begin{aligned}
+    V_{in}(r,\theta)&=\frac{1}{4\pi\epsilon_0\kappa}\frac{p}{r^2}\cos\theta + \sum_{l=0}^{\infty} A_lr^lP_l(\cos\theta)\\
+    V_{out}(r,\theta)&=\frac{1}{4\pi\epsilon_0}\frac{p}{r^2}\cos\theta + \sum_{l=0}^{\infty}\frac{B_l}{r^{l+1}}P_l(\cos\theta)
+\end{aligned}$$\indent
+Using the boundary conditions, we could get that $$\begin{aligned}
+    \frac{1}{4\pi\epsilon_0\kappa}\frac{p}{R^2}\cos\theta + \sum_{l=0}^{\infty} A_lR^lP_l(\cos\theta)&=\frac{1}{4\pi\epsilon_0}\frac{p}{R^2}\cos\theta + \sum_{l=0}^{\infty}\frac{B_l}{R^{l+1}}P_l(\cos\theta)\\
+    \frac{-2}{4\pi}\frac{p}{R^3}\cos\theta + \sum_{l=0}^{\infty} \epsilon_0\kappa lA_lR^lP_l(\cos\theta)&=\frac{-2}{4\pi}\frac{p}{R^3}\cos\theta - \sum_{l=0}^{\infty} \epsilon_0 (l+1)\frac{B_l}{R^{l+2}}P_l(\cos\theta)
+\end{aligned}$$\indent
+Thus, we could get that for $l\neq 1$, there must have $B_l=A_lR^{2l+1}$ but according to the second equation we get that $$B_l=-\frac{l\kappa}{l+1}A_lR^{2l+1},~for ~l=0,1,2,\dots$$ \indent
+Which means for $l\neq 1$, $A_l=B_l=0$. When l=1, $P_1(\cos\theta)=\cos\theta$, we could get that $$\begin{aligned}
+    A_1=\frac{2(k-1)}{k(k+2)}\frac{p}{4\pi\epsilon_0R^3},~
+    B_1=-\frac{k-1}{k+2}\frac{p}{4\pi\epsilon_0}
+\end{aligned}$$\indent
+So the protential inside the sphere $(r\leqslant R)$ is $$V_{in}(r,\theta)=\frac{1}{4\pi\epsilon_0\kappa}\frac{p}{r^2}\cos\theta + \frac{2(k-1)}{k(k+2)}\frac{p}{4\pi\epsilon_0R^3}r\cos\theta=\frac{p\cos\theta}{4\pi\epsilon_0\kappa r^2}\left(1+2\frac{r^3}{R^3}\frac{\kappa-1}{\kappa+2}\right)$$\indent
+The protential outside the sphere $(r\geqslant R)$ is $$V_{out}(r,\theta)=\frac{1}{4\pi\epsilon_0}\frac{p}{r^2}\cos\theta - \frac{k-1}{k+2}\frac{p}{4\pi\epsilon_0}\frac{1}{r^2}\cos\theta=\frac{3}{k+2}\frac{p}{4\pi\epsilon_0 r^2}\cos\theta$$
+
+\section{}
+\subsection{}
+By the definition, we have that the capacitance of the partly-oil-filled capacitor is $$C=\kappa C_0$$\indent
+$C_0$ is the capacitance when there is not oil and we have that $C_0=\frac{Q}{V}$ Q is the charge that the capacitor taking when there is not oil. Then we need to determine the charge Q. Using Gauss' Law and let $\lambda$ be the charge per unit length, we get that $$E\Delta h 2\pi r=\frac{\lambda \Delta h}{\epsilon_0}$$\indent
+So we could get the eletric field when a<r<b is $$\vec{E}=\frac{\lambda}{2\pi\epsilon_0r}\frac{\vec{r}}{r}$$\indent
+Then we could determine the protential difference is $$V=\int_a^b \vec{E}\cdot\,d\vec{r}=\frac{\lambda}{2\pi\epsilon_0}\ln\frac{b}{a}$$\indent
+So we get that $$C_0=\frac{\lambda w}{V}=\frac{2\pi\epsilon_0 w}{\ln\frac{b}{a}}$$\indent
+Then the capacitance of the partly-oil-filled capacitor is $$C=\frac{2\pi\epsilon_0\kappa w}{\ln\frac{b}{a}}$$\indent
+\subsection{}
+Using $(L-w+h_0-h)$ replace w in the expression of $C_0$($h_0$ is the raising height), we get the capacitance of the partly-air-filled capacitor is $$C'=\frac{2\pi\epsilon_0 (L-w+h_0-h)}{\ln\frac{b}{a}}$$\indent
+The capacitance of the partly-oil-filled capacitor is $$C''=\frac{2\pi\epsilon_0\kappa (w-h_0+h)}{\ln\frac{b}{a}}$$\indent
+Since the two capacitors are shunt capacitors, we could determine the total capacitance is $$C_t=C'+C''=\frac{2\pi\epsilon_0}{\ln\frac{b}{a}}\left[L+(\kappa-1)(w-h_0+h)\right]$$\indent
+We have that $$\frac{1}{2}V^2\frac{d C_t}{dh}=\rho\pi(b^2-a^2)gh$$$\rho$ is the density of oil \\\indent
+So the raising height is $$h=\frac{\epsilon_0(\kappa-1)V^2}{\rho(b^2-a^2)g\ln\frac{b}{a}}$$
+
+\newpage
+a
+\end{document}

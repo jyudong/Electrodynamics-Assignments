@@ -1,0 +1,99 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{Electrodynamics \\Problem Set 7\\}
+\author{\\董建宇 ~2019511017}
+\date{April 12}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+\subsection{}
+Considering if there only exists the top large plate, using Ampere's Law, we could get that $$B(s)2L=\mu_0\sigma Lv.$$\indent
+So the magnitude of the field produced by the top plate with positive charge density is constant $\frac{1}{2}\mu_0\sigma v$.\\\indent
+Similarly, the magnitude of the field produced by the below plate with negative charge density is the same as top plate but the direction is different. So the magnetic field between the plates is $$B=\mu_0\sigma v$$\indent
+the direction is inside the page. And the magnetic field above and below them is 0.
+\subsection{}
+Using the Lorentz force law, we could determine the force per unit area is $$F=\sigma \vec{v}\times \vec{B}.$$\indent
+B is the magnetic field produced by the below plate. So the magnitude of the magnetic force per unit area is $$F=\frac{\mu_0\sigma^2v^2}{2}.$$\indent
+And its direction is up.
+\subsection{}
+We could calculate the electric field produced by the below plate is $$E=\frac{\sigma}{2\epsilon_0}.$$\indent
+So if the magnetic force balance the electrical force, we have that the force per unit area is the same. So $$\frac{\mu_0\sigma^2v^2}{2}=\frac{\sigma^2}{2\epsilon_0}$$\indent
+So we could get that $$v=\frac{1}{\sqrt{\epsilon_0\mu_0}}=c$$\indent
+So the magnetic force balance the electrical force when the speed is the speed of light c.
+
+\section{}
+By the definition using the cylindrical coordinate, we could get that the magnetic field is $$\vec{B}=\nabla\times\vec{A}=\frac{1}{s}\frac{\partial (sA)}{\partial s}\hat{z}=\frac{A}{s}\hat{z}.$$\indent
+Using Ampere's Law, we could get that the current density is $$\vec{J}=\frac{1}{\mu_0}\nabla\times\vec{B}=\frac{1}{\mu_0}\left(-\frac{\partial}{\partial s}\frac{A}{s}\right)\hat{\varphi}=\frac{A}{\mu_0s^2}\hat{\varphi}.$$\indent
+
+\section{}
+\subsection{}
+According to Example 5.11, we get the magnetic field inside the spherical shell is uniform $$\vec{B}_{in}=\frac{2}{3}\mu_0\sigma R\omega\hat{z}$$\indent
+Using the result in Example 5.11, we could get the magnetic field outside the spherical shell is $$\vec{B}_{out}=\nabla\times\vec{A}=\frac{\mu_0R^4\omega\sigma}{3r^3}\left(2\cos\theta\hat{r}+\sin\theta\hat{\theta}\right)$$\indent
+Considering a surface S, let $\vec{B}_S$ be the magnetic field produced by itself and $\vec{B}'$ be the magnetic field produced by others. Then using the boundary conditions we could get that $$\left\{\begin{aligned}
+    \vec{B}_S+\vec{B}'&=\lim_{r\to R^+}\vec{B}\\
+    -\vec{B}_S+\vec{B}'&=\lim_{r\to R^-}\vec{B}
+\end{aligned}\right.$$\indent
+So we could get that $$\vec{B}'=\frac{2\mu_0R\omega\sigma}{3}\cos\theta\hat{r}-\frac{1}{6}\mu_0R\omega\sigma\sin\theta\hat{\theta}$$\indent
+So the total force is $$\vec{F}=\iint \vec{v}\times\vec{B}\,dq =\int_0^{\frac{\pi}{2}}\mu_0R^2\omega^2\sin\theta\sigma^22\pi R\sin\theta R\,d\theta\left(\frac{2}{3}\cos\theta\hat{\theta}+\frac{1}{6}\sin\theta\hat{r}\right)$$\indent
+It is easy to get that the force is along z-axis from symmetry. So we could get that $$\vec{F}=\int_0^{\frac{\pi}{2}}-\mu_0R^4\pi\sigma^2\omega^2\sin^3\theta\cos\theta\,d\theta \hat{z}=-\frac{1}{4}\mu_0\pi\sigma^2\omega^2R^4\hat{z}$$\indent
+
+\subsection{}
+We could calculate the electric field in total space is $$\vec{E}=\begin{cases}
+    0,&for ~r\leqslant R,\\
+    \frac{\sigma R^2}{\epsilon_0r^2}\hat{r},&for ~r\geqslant R.
+\end{cases},~~\vec{E}_{ave}=\frac{1}{2}\frac{\sigma}{\epsilon_0}\hat{r}$$\indent
+So the force is $$\vec{F}_z=\int\sigma\left\lvert \vec{E}_{ave}\right\rvert \cos\theta R^2\sin\theta\,d\theta\,d\varphi\hat{z}=\frac{\pi\sigma^2R^2}{\epsilon_0}\int_0^{\frac{\pi}{2}}\sin\theta\cos\theta \,d\theta\hat{z}=\frac{\pi\sigma^2R^2}{2\epsilon_0}\hat{z}$$
+
+
+\end{document}
+
+So we could calculate the total energy is $$E_0=\iiint\frac{1}{2}\epsilon_0\left(E^2+c^2B^2\right)\,dV$$\indent
+$$E_1=\frac{1}{2}\epsilon_0\int_R^{\infty}\,dr\int_0^{\pi}\,d\theta\int_0^{2\pi}\,d\varphi\frac{\sigma^2R^4}{\epsilon_0^2r^4}r^2\sin\theta=\frac{2\pi\sigma^2R^3}{\epsilon_0}$$\indent
+$$E_2=\frac{1}{2\mu_0}\frac{4}{3}\pi R^3\frac{4}{9}\mu_0^2\sigma^2R^2\omega^2=\frac{8}{27}\mu_0\pi\sigma^2\omega^2R^5$$\indent
+$$E_3=\frac{1}{2\mu_0}\int_R^{\infty}\,dr\int_0^{\pi}\,d\theta\int_0^{2\pi}\,d\varphi \left(\frac{\mu_0R^4\omega\sigma}{3}\right)^2\frac{1}{r^6}(1+3\cos^2\theta)r^2\sin\theta=\frac{4}{27}\mu_0\pi\sigma^2\omega^2R^5$$\indent
+So $$E_0=\frac{2\pi\sigma^2R^3}{\epsilon_0}+\frac{4}{9}\mu_0\pi\sigma^2\omega^2R^5$$\indent
+The magnetic force of attraction between the upper and lower hemispheres of the spinning charged spherical shell is $$F_1=-\frac{\partial (E_2+E_3)}{\partial R}=-\frac{20}{9}\mu_0\pi\sigma^2\omega^2R^4$$\indent
+Negative sign means they attract each other.
+
+By symmetry, we could get that the magnetic field produced by the  lower hemispheres of the spinning charged spherical shell is $$\vec{B}_{lower}=\frac{1}{3}\mu_0\sigma R\omega\hat{z}$$\indent
+Thus, the magnetic force of attraction between the upper and lower hemispheres of the spinning charged spherical shell is $$$$
+P5.17 in 第三版
+Since the soleniod is infinite along z-axis and the shape is constant along the length of the solenoid, it has the symmetry for every point we want to determine. For example, if we want to determine the magnetic field at $\vec{r}$, we could set up the proper coordinate system satisfying $\vec{r}=(x,0,0)$. For every current loop at z, we could also find another current loop at -z, satisfying the direction of magnetic field at $\vec{r}=(x,0,0)$ is along z-axis because of the symmetry.\\\indent 
+Thus, the magnetic field of an infinite soleniod runs parallel to the axis, regardless of the corss-sectional shape of the coil, as long as that shape is constant along the length of the solenoid.\\\indent
+First, we determine the magnitude of the field outside of such a coil. Using Ampere's Law, choosing a rectangle Ampere's close loop outside the coil, we could get that $$\vec{B}(a)=\vec{B}(b),~for ~a\neq b.$$\indent
+We could also get that for a large distance s, the magnitude is $\lim_{s\to\infty}\vec{B}(s)=0$, so the magnitude of the field outside of such a coil is 0.\\\indent
+Second, we determine the magnitude of the field inside of such a coil. sing Ampere's Law, choosing a rectangle Ampere's close loop corssing the boundary coil, we could get that $$B_{in}\Delta L=\mu_0n\Delta LI$$\indent
+So we could get the magnitude of the field inside of such a coil is $\vec{B}=\mu_0nI$, n is the number of windings.\\\indent
+In a word, the magnitude of the field is $$\vec{B}()\begin{cases}
+    
+\end{cases}$$
+If the radius of the donut is so large that we could 

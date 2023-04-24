@@ -1,0 +1,105 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{Electrodynamics \\Problem Set 3\\}
+\author{\\董建宇 ~2019511017}
+\date{March 15}
+
+\begin{document}
+    
+\maketitle
+\newpage
+\section{}
+\subsection{}
+To calculate the electric field inside the cavity, we could calculate the positive image charge $q' = 2q$ at the position $\vec{x_q'} = (0,0,2a)$. The electric field inside the cavity is the sum of the electric fileds $\vec{E_1}$ produced by the negative point charge q and $\vec{E_2}$ produced by the image charge q'.$$\vec{E_1} = -\frac{1}{4\pi\epsilon_0}\frac{q}{\left\lvert \vec{r} - \vec{x_q}\right\rvert ^2}\frac{\vec{r} - \vec{x_q}}{\left\lvert \vec{r} - \vec{x_q}\right\rvert}$$ $$\vec{E_2} = \frac{1}{4\pi\epsilon_0} \frac{q'}{\left\lvert \vec{r} - \vec{x_q'}\right\rvert^2 }\frac{\vec{r} - \vec{x_q'}}{\left\lvert \vec{r} - \vec{x_q'}\right\rvert}$$\indent
+So that we have 
+\begin{equation}\label{eq:mti}\begin{split}
+    &\vec{E_{in}} = \vec{E_1} + \vec{E_2} 
+    \\ &= \frac{q}{4\pi\epsilon_0} \left\{\frac{2}{\left[x^2 + y^2 + \left(z-2a\right)^2 \right]^{\frac{3}{2}}} - \frac{1}{\left[x^2 + y^2 +\left(z-\frac{R}{2}+\frac{a}{2}\right)^2\right]^{\frac{3}{2}} }\right\}x\vec{i}
+    \\ &+ \frac{q}{4\pi\epsilon_0} \left\{\frac{2}{\left[x^2 + y^2 + \left(z-2a\right)^2 \right]^{\frac{3}{2}}} - \frac{1}{\left[x^2 + y^2 +\left(z-\frac{R}{2}+\frac{a}{2}\right)^2\right]^{\frac{3}{2}} }\right\}y\vec{j}
+    \\ &+ \frac{q}{4\pi\epsilon_0} \left\{\frac{2\left(z-2a\right)}{\left[x^2 + y^2 + \left(z-2a\right)^2 \right]^{\frac{3}{2}}} - \frac{z-\frac{R}{2}+\frac{a}{2}}{\left[x^2 + y^2 +\left(z-\frac{R}{2}+\frac{a}{2}\right)^2\right]^{\frac{3}{2}} }\right\}\vec{k}
+\end{split}\end{equation}
+
+\subsection{}
+Since this is a conductor, the surface charge density on the wall of the cavity is \small$\sigma = \epsilon_0 \left\lvert \vec{E_{in}}\right\rvert $, so we could calculate that $$\sigma = \frac{q}{4\pi} \sqrt{ \frac{ 4 }{\left[x^2+y^2+\left(z-2a\right)\right]^2 } + \frac{1}{ \left[x^2+y^2+\left(z-\frac{R}{2}+\frac{a}{2}\right)^2\right]^2 } - 4 \frac{ x^2+y^2+\left(z-2a\right) \left(z-\frac{R}{2}+\frac{a}{2} \right)}{\left[x^2+y^2+\left(z-2a\right)\right]^{\frac{3}{2}} \left[x^2+y^2+\left(z-\frac{R}{2}+\frac{a}{2}\right)\right]^{\frac{3}{2}} }}$$\indent\normalsize
+For all points which satisfy $x^2+y^2+\left(z-\frac{R}{2}\right)^2 = a^2$
+
+\subsection{}
+The electric field outside the solid sphere is produced by charge (Q-q) and position is origin.$$E_{out} = \frac{1}{4\pi\epsilon_0} \frac{Q-q}{r^2}$$
+
+\subsection{}
+\includegraphics[scale=0.2]{hw3.jpg}
+
+\subsection{}
+If we bring a new charge Q near the outside of the conductor, the electric field outside of conductor will change.\\\indent 
+Because the new charge will cause the outer surface charge density change then cause the electric field outside of the conductor, while the new charge won't influence the electric field inside the cavity such that it won't influence the the surface charge density on the wall of the cavity.
+
+\section{}
+\subsection{}
+Since the conducting pipe is infinite along the z-axis, to determine the potential everywhere inside the pipe, we just need to calculate the two-dimensional Laplace's equation$$\frac{\partial ^2V}{\partial x^2} + \frac{\partial ^2V}{\partial y^2} = 0$$\indent
+The boundary conditions are$$ V=\left\{
+\begin{array}{rcl}
+    0, & & for~x=\pm b,~y=0,\\
+    V_0, & & for~y=a.
+\end{array}\right.$$\indent
+Assume there exists a solution in the form of products$$V(x,y) = X(x)Y(y)$$\indent
+So we could get$$\frac{1}{X}\frac{d^2 X}{dx^2} + \frac{1}{Y}\frac{d^2 Y}{dy^2} = 0$$\indent
+Then we get$$\frac{1}{X}\frac{d^2 X}{dx^2} = C_1 ~and~ \frac{1}{Y}\frac{d^2 Y}{dy^2} = C_2, ~with~C_1+C_2=0$$\indent
+We could assume that $C_1 = -k^2 < 0,~C_2 = k^2 > 0$, thus$$X(x) = A\sin(kx) + B\cos(kx),~~Y(y) = Ce^{ky} + De^{-ky}$$\indent
+So that we have$$V(x,y) = \left(A\sin(kx) + B\cos(kx)\right)\left(Ce^{ky} + De^{-ky}\right)$$\indent
+According to the boundary conditions, we have
+\begin{equation}
+    \begin{cases}
+        A\sin(kb) + B\cos(kb) = 0\\
+        -A\sin(kb) + B\cos(kb) = 0\\
+        C + D = 0\\
+        \left(A\sin(kx) + B\cos(kx)\right)\left(Ce^{ka} + De^{-ka}\right) = V_0
+    \end{cases}
+\end{equation}\indent
+We could calculate that \large$$V_n(x,y) = A\sin\left(\frac{n\pi}{b}x\right)\left(e^{\frac{n\pi}{b}y}-e^{-\frac{n\pi}{b}y}\right),～(n = 1,2,3,\dots)$$\indent\normalsize
+So we could claculate the general solution\large$$V(x,y) = \sum_{n = 1}^{\infty} A_n \sin\left(\frac{n\pi}{b}x\right)\left(e^{\frac{n\pi}{b}y}-e^{-\frac{n\pi}{b}y}\right) $$\indent\normalsize
+So $$V_0 = V(x,a) = \sum_{n = 1}^{\infty} A_n \sin\left(\frac{n\pi}{b}x\right) \left(e^{\frac{n\pi}{b}a}-e^{-\frac{n\pi}{b}a}\right)$$\indent\normalsize
+Using Fourier transform, we could get \LARGE$$A_n = \frac{2V_0}{n\pi}\frac{1-\cos n\pi}{e^{\frac{n\pi}{b}a}-e^{-\frac{n\pi}{b}a}} = \begin{cases}
+    0, ~~for ~n ~is ~even,\\
+    \frac{4V_0}{n\pi}\frac{1}{e^{\frac{n\pi}{b}a}-e^{-\frac{n\pi}{b}a}}, ~~for ~n ~is ~odd.
+\end{cases}$$\indent\normalsize
+In summary, the potential inside the pipe is \LARGE$$V(x,y) = \frac{4V_0}{\pi } \sum _{n=1,3,5\dots} \frac{1}{n\left(e^{\frac{n\pi}{b}a}-e^{-\frac{n\pi}{b}a}\right)}\sin\left(\frac{n\pi}{b}x\right)\left(e^{\frac{n\pi}{b}y}-e^{-\frac{n\pi}{b}y}\right)$$
+
+\normalsize
+\subsection{}
+The electric field is the divergence of V(x,y), so we have \LARGE\begin{equation}\label{eq:mti}
+\begin{split}
+    &\vec{E} = -\bigtriangledown V(x,y) =
+    \\ & -\frac{4V_0}{b } \sum_{n=1,3,5\dots} \frac{1}{\left(e^{\frac{n\pi}{b}a}-e^{-\frac{n\pi}{b}a}\right)}\cos\left(\frac{n\pi}{b}x\right)\left(e^{\frac{n\pi}{b}y}-e^{-\frac{n\pi}{b}y}\right)\vec{i}
+    \\ & -\frac{4V_0}{b } \sum _{n=1,3,5\dots} \frac{1}{\left(e^{\frac{n\pi}{b}a}-e^{-\frac{n\pi}{b}a}\right)}\sin\left(\frac{n\pi}{b}x\right)\left(e^{\frac{n\pi}{b}y}+e^{-\frac{n\pi}{b}y}\right)\vec{j}
+\end{split}\end{equation}\indent\normalsize
+\includegraphics[scale=0.2]{IMG_0633.jpg}
+
+\subsection{}
+Since y = 0 is an equipotential surface, the charge per unit area is \LARGE$$\sigma = -\epsilon_0\left.\frac{\partial V}{\partial y} \right\lvert_{y=0} = -\frac{8\epsilon_0V_0}{ b} \sum_{n=1,3,5\dots}\frac{1}{\left(e^{\frac{n\pi}{b}a}-e^{-\frac{n\pi}{b}a}\right)}\sin\left(\frac{n\pi}{b}x\right)$$
+
+\end{document}

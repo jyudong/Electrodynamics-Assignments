@@ -1,0 +1,81 @@
+\documentclass[10.5pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{epsfig} %% for loading postscript figures
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage{graphics}
+\usepackage{titlesec}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{indentfirst}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{xeCJK}
+\usepackage{extarrows}
+\setCJKmainfont{Kai}
+
+\title{Electrodynamics \\Problem Set 5\\}
+\author{\\董建宇 ~2019511017}
+\date{March 15}
+
+\begin{document}
+    
+\maketitle
+\newpage
+
+\section{}
+According to Laplace function in cylindrical coordinate system, we could get $$\frac{1}{\mathcal{S}} \frac{d}{ds}\left(s\frac{d\mathcal{S}(s)}{ds}\right) + \frac{1}{\Phi} \frac{1}{s^2} \frac{d^2 \Phi}{d\varphi^2} + \frac{1}{\mathcal{Z}} \frac{d^2\mathcal{Z}}{dz^2} = 0$$\indent
+Since the symmetry, we get the potential is independent of z. Thus we could let $$\frac{1}{\mathcal{S}} \frac{d}{ds}\left(s\frac{d\mathcal{S}(s)}{ds}\right) = c_1, ~\frac{1}{\Phi} \frac{1}{s^2} \frac{d^2 \Phi}{d\varphi^2} = c_2,$$\indent
+and let $c_2=-n^2$, so we could get the general solution is $$V(s,\varphi) = \left(A\ln s + B\right) \Phi_{n=0}(\varphi) + \sum_{n=1}^{\infty}\left(A_ns^n + B_ns^{-n}\right)\left(C_n\cos(n\varphi) + D_n\sin(n\varphi)\right)$$\indent
+When n=0, we could have $\frac{d^2 \Phi}{d\varphi^2} = 0$, which means $\Phi_{n=0}(\varphi) = C\varphi + D$. When $\varphi=0$, we have $$V(s,\varphi) = \left(A\ln s + B\right)D + \sum_{n=1}^{\infty} \left(A_ns^n+B_ns^{-n}\right) C_n = constant.$$\indent 
+Which means that $V(s,\varphi)$ is indepnedent of s, so we could get the potential is $$V(s,\varphi) = C_0 \varphi + D_0.$$\indent
+We have $\varphi_0 = 2\arcsin\left(\frac{a}{L}\right)$, L is the length of of the plate. Then we have $V = C_0 \varphi_0 + D_0$. We could let the potential at negative electrode is 0, so the potential is $$V(s,\varphi)=\frac{V}{2\arcsin\left(\frac{a}{L}\right)}\varphi.$$\indent
+We could calculate the electric field is $$\vec{E} = -\nabla V(s,\varphi) = -\frac{V}{2\arcsin\left(\frac{a}{L}\right)}\frac{1}{s} \hat{e_{\varphi}},$$\indent
+then the surface charge density at the top plate is $$\sigma(s) = \frac{\epsilon_0V}{2\arcsin\left(\frac{a}{L}\right)} \frac{1}{s}.$$\indent
+The total charge is $$Q = \int_{L_1}^{L_1+L} \sigma(s)L' \,ds = \frac{\epsilon_0VL'}{2\arcsin\left(\frac{a}{L}\right)} \ln\left(\frac{L_1+L}{L_1}\right).$$\indent
+Using triangular similarity, we get $$Q=\frac{\epsilon_0VL'}{2\arcsin\left(\frac{a}{L}\right)}\ln\left(\frac{d+a}{d-a}\right).$$\indent
+By the definition, we could determine the capacitance is $$C = \frac{Q}{V} = \frac{\epsilon_0L'}{2\arcsin\left(\frac{a}{L}\right)}\ln\left(\frac{d+a}{d-a}\right).$$\indent
+Since a<<d a<<L and LL'=A, we could get the expression of capacitance is $$C = \frac{\epsilon_0A}{d-a} \left(1-\frac{a}{d-a}\right)$$\indent
+So the lowest-order correction is $$-\frac{\epsilon_0Aa}{(d-a)^2}$$
+
+\section{}
+Using Taylor expansion, we could get the form of the octopole potential is $$\begin{aligned}V_{octo}(\vec{r}) 
+    &= \frac{1}{4\pi\epsilon_0} \iiint -\frac{\rho(\vec{x'})}{3!} \sum_{i,j,k=1}^3 x_i'x_j'x_k'\frac{\partial^3}{\partial x_i\partial x_j\partial x_k}\frac{1}{R} \,d\tau'\\
+    &=-\frac{1}{4\pi\epsilon_0} \frac{1}{3!} \sum_{i,j,k=1}^3 \left(\iiint x_i'x_j'x_k'\rho(\vec{x'})\,d\tau'\right)\frac{\partial^3}{\partial x_i\partial x_j\partial x_k}\frac{1}{R}\\
+    &=-\frac{1}{4\pi\epsilon_0} \frac{1}{6} \sum_{i,j,k=1}^3 O_{ijk} \frac{15x_ix_jx_k-3r^2(x_i\delta_{jk} + x_j\delta_{ik} + x_k\delta_{ij})}{r^7}
+\end{aligned}$$\indent
+$O_{ijk} = \iiint x_i'x_j'x_k'\rho(\vec{x'})\,d\tau'$\indent
+We could easily check that $$\begin{aligned}
+    &\sum_{l=1}^3 O_{ll1} \frac{15x_l^2x-3r^2(x_l\delta_{1l} + x_l\delta_{1l} + x)}{r^7} = O_{111}\frac{15r^2x-3r^25x}{r^7} = 0\\
+    &\sum_{l=1}^3 O_{ll2} \frac{15x_l^2y-3r^2(x_l\delta_{2l} + x_l\delta_{2l} + y)}{r^7} = O_{222}\frac{15r^2y-3r^25y}{r^7} = 0\\
+    &\sum_{l=1}^3 O_{ll3} \frac{15x_l^2z-3r^2(x_l\delta_{3l} + x_l\delta_{3l} + z)}{r^7} = O_{333}\frac{15r^2z-3r^25z}{r^7} = 0\\
+\end{aligned}$$
+
+\section{}
+\subsection{}
+We have the potential at $\vec{x} = (x,0,0)$ is $$V(x) = \frac{1}{4\pi\epsilon_0}\frac{q}{x-\frac{3a}{2}} - \frac{1}{4\pi\epsilon_0}\frac{3q}{x-\frac{a}{2}} + \frac{1}{4\pi\epsilon_0}\frac{3q}{x+\frac{a}{2}} - \frac{1}{4\pi\epsilon_0}\frac{q}{x+\frac{3a}{2}} = \frac{3aq}{4\pi\epsilon_0x^2}\left(\frac{1}{1-\frac{9a^2}{4x^2}} - \frac{1}{1-\frac{a^2}{4x^2}}\right)$$\indent
+When $x>\frac{3a}{2}$, we have $\frac{9a^2}{4x^2}<1$ and $\frac{a^2}{4x^2}<1$. By taking Taylor expansion, we could get $$\frac{1}{1-\frac{9a^2}{4x^2}} = \sum_{n=0}^{\infty} \left(\frac{9a^2}{4x^2}\right)^n,~\frac{1}{1-\frac{a^2}{4x^2}} = \sum_{n=0}^{\infty} \left(\frac{a^2}{4x^2}\right)^n$$\indent
+Thus, we get the leading approximation is $$V(x) = \frac{3qa^3}{2\pi\epsilon_0} \frac{1}{x^4}$$
+\subsection{}
+According to last question, we could get the electric field at $\left\lvert\vec{x} \right\rvert > \frac{3a}{2}$ is $$\vec{E}(x) = -\frac{d V(x)}{d x} \vec{i}= \sum_{n=0}^{\infty} 2n\left(9^n-1\right) \left(\frac{a^2}{4}\right)^n \frac{1}{x^{2n+1}} \vec{i}$$\indent
+Thus, we could determine the energy of a dipole $\vec{p}=\left\rvert p\right\rvert \vec{k}$ is $$U(x) = -\vec{p} \cdot \vec{E}(x) = 0$$
+
+\section{}
+\subsection{}
+According to the question, we could easily get the expression for the modification of the energy of the quadrupole due to the presence of this inhomogeneous electric field is $$E_{mod} = \frac{1}{6} Q_{33} \frac{\partial E_z}{\partial z} = \frac{1}{6}eQ\frac{\partial E_z}{\partial z}$$\indent
+\subsection{}
+Since the nuclear has a uniform charge density, with total charge Ze, we could get the charge density is $\rho = \frac{Ze}{\frac{4}{3}\pi a^2c}$. Then we could calculate $$Q_{33} = \rho \iiint (3z^2-(x^2+y^2+z^2))\,dV = \frac{2}{5}Ze(c^2-a^2)$$which is quadrupole moment.\\\indent
+For $^{153}Eu$ Z=63, we have $$Q = \frac{Q_{33}}{e} = \frac{2}{5} Z(c+a)(c-a).$$\indent
+So we get $(c-a)=7.086\times 10^{-15}cm$, then fractional difference in radii is $$\frac{c-a}{R} = 0.01$$
+\end{document}
